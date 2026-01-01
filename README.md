@@ -24,3 +24,7 @@ CS101,Monday,09:00
 Save this as `timetable.csv` and run the command above. Removing `Start Time` from the header produces a missing column error.
 
 Use --delimiter tab for TSV files or --delimiter ';' for semicolon-separated files.
+
+## Tab-separated input
+
+Run `python check_headers.py --delimiter tab --check-rows export.tsv A B` to validate a TSV export.
