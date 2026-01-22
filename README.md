@@ -13,3 +13,12 @@ Exit status is 0 for a valid header, 1 for header problems and 2 if the file can
 Add `--check-rows` to check each record against the header width. Blank lines
 are skipped. For a quoted record spanning several lines, the report uses its
 ending line number. A width mismatch returns exit status 1.
+
+## Example CSV
+
+```csv
+Course Code,Day,Start Time
+CS101,Monday,09:00
+```
+
+Save this as `timetable.csv` and run the command above. Removing `Start Time` from the header produces a missing column error.
