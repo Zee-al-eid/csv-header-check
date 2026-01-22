@@ -30,5 +30,10 @@ class RowValidationTests(unittest.TestCase):
         self.assertEqual(self.run_cli("A,B\n1\n").returncode, 0)
 
 
+    def test_tab_delimiter(self):
+        result = self.run_cli('A\tB\n1\t2\n', '--delimiter', 'tab', '--check-rows')
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+
 if __name__ == "__main__":
     unittest.main()
