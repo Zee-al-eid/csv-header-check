@@ -35,5 +35,10 @@ class RowValidationTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
 
 
+    def test_semicolon_delimiter(self):
+        result = self.run_cli('A;B\n1;2\n', '--delimiter', ';', '--check-rows')
+        self.assertEqual(result.returncode, 0, result.stderr)
+
+
 if __name__ == "__main__":
     unittest.main()
