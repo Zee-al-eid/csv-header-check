@@ -40,5 +40,11 @@ class RowValidationTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
 
 
+    def test_missing_required_header(self):
+        result = self.run_cli('A,C\n1,2\n')
+        self.assertEqual(result.returncode, 1)
+        self.assertIn('Missing columns: B', result.stdout)
+
+
 if __name__ == "__main__":
     unittest.main()
