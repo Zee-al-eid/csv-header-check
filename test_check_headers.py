@@ -46,5 +46,11 @@ class RowValidationTests(unittest.TestCase):
         self.assertIn('Missing columns: B', result.stdout)
 
 
+    def test_duplicate_after_trimming(self):
+        result = self.run_cli('A,B, B \n')
+        self.assertEqual(result.returncode, 1)
+        self.assertIn('Duplicate columns: B', result.stdout)
+
+
 if __name__ == "__main__":
     unittest.main()
