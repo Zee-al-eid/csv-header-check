@@ -52,5 +52,11 @@ class RowValidationTests(unittest.TestCase):
         self.assertIn('Duplicate columns: B', result.stdout)
 
 
+    def test_unterminated_quote_in_data(self):
+        result = self.run_cli('A,B\n1,"unfinished\n', '--check-rows')
+        self.assertEqual(result.returncode, 2)
+        self.assertIn('Could not read CSV', result.stderr)
+
+
 if __name__ == "__main__":
     unittest.main()
