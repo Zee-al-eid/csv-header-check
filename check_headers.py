@@ -13,11 +13,13 @@ def main():
     parser.add_argument("columns", nargs="+", help="Required column names")
     parser.add_argument("--check-rows", action="store_true",
                         help="Report records with the wrong number of fields")
+    parser.add_argument("--delimiter", choices=[",", ";", "tab"], default=",")
     args = parser.parse_args()
+    delimiter = "\t" if args.delimiter == "tab" else args.delimiter
 
     try:
         with args.file.open(encoding="utf-8-sig", newline="") as source:
-            reader = csv.reader(source, strict=True)
+            reader = csv.reader(source, delimiter=delimiter, strict=True)
             header = next(reader, [])
             invalid_rows = False
             if args.check_rows and header:
