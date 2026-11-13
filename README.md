@@ -9,3 +9,7 @@ python check_headers.py timetable.csv "Course Code" Day "Start Time"
 ```
 
 Exit status is 0 for a valid header, 1 for header problems and 2 if the file cannot be read or parsed. Header matching is case-sensitive and ignores surrounding whitespace. CSV files can include a UTF-8 byte order mark.
+
+Add `--check-rows` to check each record against the header width. Blank lines
+are skipped. For a quoted record spanning several lines, the report uses its
+ending line number. A width mismatch returns exit status 1.
